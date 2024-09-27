@@ -1,0 +1,67 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Resources/InputHubEditor.uss?fileID=7433441132597879392&amp;guid=48e3a56c1dffc034780e1cf7b4a5bc3f&amp;type=3#InputHubEditor" />
+    <engine:VisualElement name="root" style="flex-grow: 1;">
+        <engine:VisualElement name="class-header" class="container__background container__border center-spacing container-padding" style="flex-grow: 0; margin-top: 4px; margin-bottom: 4px;">
+            <engine:Label text="Input Hub Manager" name="header__label" class="custom-header flex-center" />
+        </engine:VisualElement>
+        <engine:VisualElement name="main-hub" class="container__background container__border container-padding" style="flex-grow: 0; margin-bottom: 30px;">
+            <engine:VisualElement>
+                <engine:Label text="Main Hub" class="center-spacing custom-label flex-center" />
+            </engine:VisualElement>
+            <engine:VisualElement name="hud-settings__container">
+                <engine:Toggle label="Mouse Connected" binding-path="m_isMouseConnected" />
+                <engine:Toggle label="GamePad Connected" binding-path="m_isGamepadConnected" />
+                <engine:EnumField label="Current Device" value="KeyboardMouse" type="TCInputSystem.ControlScheme, TCS.InputSystem" binding-path="m_currentControlScheme" />
+            </engine:VisualElement>
+            <engine:VisualElement name="menu-select" class="center-spacing" style="flex-grow: 1; overflow: hidden; display: flex;">
+                <engine:VisualElement>
+                    <engine:Label text="Select Menu" class="flex-center custom-label" />
+                </engine:VisualElement>
+                <engine:ToggleButtonGroup allow-empty-selection="false" value="0001" name="menu-select" view-data-key="MenuSelectKey" class="flex-center">
+                    <engine:Button text="Settings" />
+                    <engine:Button text="Vectors" />
+                    <engine:Button text="Flags" />
+                </engine:ToggleButtonGroup>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="input-settings__container" class="container__background container__border container-padding container__animate">
+            <engine:Label text="Input Settings" class="center-spacing custom-label flex-center" />
+            <engine:VisualElement name="input-settings__panel" style="flex-direction: row;">
+                <engine:VisualElement class="content-align-half" style="width: auto;">
+                    <engine:Label text="Label" class="custom-inner-label flex-center" />
+                    <engine:Toggle label="Invert Look Y" binding-path="m_invertY" />
+                    <engine:Toggle label="Invert Look X" binding-path="m_invertX" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-grow: 1;">
+                    <engine:Label text="Label" class="custom-inner-label flex-center" />
+                    <engine:Vector2Field label="Mouse Speed" name="v2-mouse-speed" binding-path="m_mouseRotationSpeed" />
+                    <engine:Vector2Field label="Gamepad Speed" binding-path="m_gamepadRotationSpeed" name="v2-controller-speed" style="flex-shrink: 1; flex-grow: 1;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="input-values__container" class="container__background container__border container-padding container__animate" style="flex-grow: 0;">
+            <engine:Label text="Input Vector Feedback" class="center-spacing custom-label flex-center" />
+            <engine:Vector2Field label="Move Input" binding-path="m_moveInput" />
+            <engine:Vector2Field label="Rotation Input" binding-path="m_rotateInput" />
+            <engine:Vector2Field label="Controller Rotation Input" binding-path="m_rotateControllerInput" />
+            <engine:Vector2Field label="Scroll Wheel Input" binding-path="m_scrollWheelInput" />
+        </engine:VisualElement>
+        <engine:VisualElement name="input-flags__container" class="container__background container__border container-padding container__animate" style="flex-grow: 0;">
+            <engine:Label text="Input Flag Feedback" class="center-spacing custom-label flex-center" />
+            <engine:VisualElement style="flex-grow: 1; flex-wrap: wrap; flex-direction: row;">
+                <engine:Toggle label="Jump Flag" binding-path="m_jumpFlag" class="flag-align-half" />
+                <engine:Toggle label="Run Flag" binding-path="m_runFlag" class="flag-align-half" />
+                <engine:Toggle label="Reload Flag" binding-path="m_reloadFlag" class="flag-align-half" />
+                <engine:Toggle label="Attack Flag" binding-path="m_attackFlag" class="flag-align-half" />
+                <engine:Toggle label="Crouch Flag" binding-path="m_crouchFlag" class="flag-align-half" />
+                <engine:Toggle label="Block Flag" binding-path="m_blockFlag" class="flag-align-half" />
+                <engine:Toggle label="Interact Flag" binding-path="m_interactFlag" class="flag-align-half" />
+                <engine:Toggle label="Escape Flag" binding-path="m_escapeFlag" class="flag-align-half" />
+                <engine:Toggle label="Left Tab Flag" binding-path="m_openUIFlag" class="flag-align-half" />
+                <engine:Toggle label="Emote Flag" binding-path="m_emoteFlag" class="flag-align-half" />
+                <engine:Toggle label="Quote Flag" binding-path="m_commandFlag" class="flag-align-half" />
+                <engine:Toggle label="KeyPad One Flag" binding-path="m_numOneFlag" class="flag-align-half" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

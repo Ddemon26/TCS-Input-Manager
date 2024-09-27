@@ -1,0 +1,129 @@
+* {
+    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Unity.ttf?fileID=12800000&guid=09aee9ecd7b24ba4d91acfd97f76a26f&type=3#Unity");
+    -unity-font-style: bold;
+    font-size: 13px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    -unity-text-outline-width: 0.2px;
+    text-shadow: 0.8px 0.8px 0.7px rgb(29, 29, 29);
+    color: rgb(255, 255, 255);
+}
+
+.custom-label {
+    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    font-size: 16px;
+    color: rgb(255, 251, 0);
+}
+
+.custom-inner-label {
+    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    font-size: 16px;
+    color: rgb(255, 251, 0);
+}
+
+.custom-header {
+    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    font-size: 33px;
+    color: rgb(255, 251, 0);
+    -unity-text-outline-width: 1px;
+    text-shadow: 2px 2px 0.7px rgb(29, 29, 29);
+    letter-spacing: 8px;
+    -unity-text-align: middle-center;
+}
+
+.custom-header__background {
+}
+
+.custom-container {
+}
+
+.container__background {
+    background-color: rgb(60, 60, 60);
+    overflow: hidden;
+}
+
+.container__border {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 1.6px;
+    border-right-width: 1.8px;
+    border-bottom-width: 1.8px;
+    border-left-width: 1.6px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.flex-center {
+    align-self: center;
+    justify-content: center;
+}
+
+.custom-label {
+    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    font-size: 16px;
+}
+
+.center-spacing {
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+}
+
+.container-padding {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.flag-align-half {
+    width: 48%;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.content-align-half {
+    flex-grow: 1;
+}
+
+.center-spacing {
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+}
+
+.container__animate {
+    transition-duration: 0.2s, 0.1s;
+    transition-timing-function: ease-in-out, ease;
+    transition-property: scale, display;
+    transition-delay: 0s, 0.2s;
+}
+
+.container__hide {
+    scale: 0.01 0.01;
+    display: none;
+}
+
+.unity-button {
+    font-size: 16px;
+}
+
+.unity-button:hover {
+    color: rgb(85, 226, 46);
+    scale: 1.05 1.05;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
