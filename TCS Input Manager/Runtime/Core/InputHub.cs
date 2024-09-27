@@ -162,12 +162,12 @@ namespace TCS.InputSystem {
 
         static void HandleBooleanInput(bool input, Action<bool> setInputAction) => setInputAction(input);
 
-        void OnMove(Vector2 input) => m_moveInput = input;
+        public void OnMove(Vector2 input) => m_moveInput = input;
 
         [SerializeField] Vector2 m_mouseRotationSpeed = new(1.0f, 1.0f);
         [SerializeField] Vector2 m_gamepadRotationSpeed = new(1.0f, 1.0f);
 
-        void OnRotate(Vector2 input, bool isMouseDevice) {
+        public void OnRotate(Vector2 input, bool isMouseDevice) {
             if (!isMouseDevice) return;
             input.x *= m_mouseRotationSpeed.x;
             input.y *= m_mouseRotationSpeed.y;
@@ -201,8 +201,8 @@ namespace TCS.InputSystem {
         public bool m_jumpFlag, m_runFlag, m_reloadFlag,
             m_attackFlag, m_crouchFlag, m_blockFlag, m_interactFlag,
             m_escapeFlag, m_openUIFlag, m_emoteFlag, m_commandFlag, m_numOneFlag;
-        void OnJumpFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_jumpFlag = value);
-        void OnRunFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_runFlag = value);
+        public void OnJumpFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_jumpFlag = value);
+        public void OnRunFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_runFlag = value);
         void OnReloadFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_reloadFlag = value);
         void OnAttackFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_attackFlag = value);
         void OnCrouchFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_crouchFlag = value);
