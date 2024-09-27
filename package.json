@@ -2,7 +2,7 @@
   "name": "com.tentcitystudio.input-manager",
   "displayName": "Unity Input Manager",
   "description": "A input manager for Unity that allows you to easily create and manage input actions.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "input",
     "attribute",
