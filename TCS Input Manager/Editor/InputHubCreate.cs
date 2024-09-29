@@ -4,7 +4,7 @@ namespace TCS.InputSystem.Editor {
     public static class InputHubCreate {
         const string INPUT_HUB = "<color=#00FF00ff>[InputHub]</color>";
 
-        [MenuItem("Tools/Create InputHub")]
+        [MenuItem("Tools/TCS/Create InputHub")]
         static void CreateInputHub() {
             // Check if an InputHub already exists in the scene
             if (!Object.FindFirstObjectByType<InputHub>(FindObjectsInactive.Include)) {
