@@ -48,7 +48,7 @@ To get started with **TCS Input Manager**, follow these steps:
 
 - **Installing the Unity Package using Git**
   ```
-  https://github.com/Ddemon26/Input-Manager.git
+  https://github.com/Ddemon26/TCS-Input-Manager.git
   ```
 - **Cloning to Contribute**
   1. Clone or download this repository.
