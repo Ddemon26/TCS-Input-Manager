@@ -1,8 +1,8 @@
+# 🎮 TCS Input Manager
+
 ![Unity](https://img.shields.io/badge/Unity-v2023.3%2B-blue)
 ![License](https://img.shields.io/github/license/Ddemon26/TCS-Input-Manager)
 ![Stars](https://img.shields.io/github/stars/Ddemon26/TCS-Input-Manager)
-
-# 🎮 Enhance Your Game with the Input Manager
 
 ![Contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg?style=for-the-badge)
 ![Last commit](https://img.shields.io/github/last-commit/Ddemon26/TCS-Input-Manager?style=for-the-badge)
@@ -10,20 +10,20 @@
 
 ![Input Reader](https://github.com/Ddemon26/TCS-Input-Manager/assets/95268795/3edc1704-8ffc-4229-9ce0-a23efad5bf57)
 
-✨ **Input Manager** is a powerful input handling system designed for Unity developers to manage player inputs seamlessly and efficiently.
+✨ **TCS Input Manager** is a powerful input handling system designed for Unity developers to manage player inputs seamlessly and efficiently.
 
 ## 📜 Table of Contents
-- [Why Choose Input Manager?](#-why-choose-Input-Manager)
-- [Key Features](#-key-features)
-- [Getting Started](#-getting-started)
-- [Installation](#-installation)
-- [Customization](#-customization)
-- [Contributing](#-contributing)
-- [License](#-license)
+- Why Choose Input Manager?
+- Key Features
+- Getting Started
+- Installation
+- Customization
+- Contributing
+- License
 
 ## 🌟 Why Choose Input Manager?
 
-- 🛠️ **Seamless Integration**: As a ScriptableObject, Input Manager integrates easily into any Unity project, offering quick setup and enhanced input handling.
+- 🛠️ **Seamless Integration**: As a ScriptableObject, TCS Input Manager integrates easily into any Unity project, offering quick setup and enhanced input handling.
 - 🔧 **Customizable and Extensible**: Define your own input actions, allowing Input Manager to scale with your project’s unique requirements.
 - 🎮 **Device Agnostic**: Supports various input devices, ensuring a smooth experience whether players use a keyboard, mouse, or gamepad.
 - ⚡ **Event-Driven Architecture**: Avoid cluttered input checks in your update loops by using Input Manager's event-based system for input handling.
@@ -37,7 +37,7 @@
 
 ## 🚀 Getting Started
 
-To get started with **Input Manager**, follow these steps:
+To get started with **TCS Input Manager**, follow these steps:
 
 1. **Install the Dependencies**: Ensure any required packages are installed.
 2. **Open the Input Manager**: Navigate to `Tools > Input Manager` in the Unity Editor.
@@ -45,11 +45,12 @@ To get started with **Input Manager**, follow these steps:
 4. **Use Input Events**: Start using the input events to manage player actions.
 
 ## 🔧 Installation
--Installing the Unity Package using Git
-```
-https://github.com/Ddemon26/Input-Manager.git
-```
--Cloning to Contribute
+
+- **Installing the Unity Package using Git**
+  ```
+  https://github.com/Ddemon26/Input-Manager.git
+  ```
+- **Cloning to Contribute**
   1. Clone or download this repository.
   2. Place the folder in the `Assets` directory of your Unity project.
   3. Open Unity and navigate to `Tools > Input Manager` to begin configuration.
