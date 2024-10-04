@@ -1,6 +1,6 @@
 {
   "name": "com.tcs.input-manager",
-  "displayName": "Unity Input Manager",
+  "displayName": "TCS-InputManager",
   "description": "A input manager for Unity that allows you to easily create and manage input actions.",
   "version": "1.0.1",
   "keywords": [
@@ -14,7 +14,7 @@
   "dependencies": {},
   "author": {
     "name": "Damon Fedorick",
-    "url": "https://github.com/Ddemon26/Input-Manager"
+    "url": "https://github.com/Ddemon26/TCS-Input-Manager"
   },
-  "documentationUrl": "https://github.com/Ddemon26/Input-Manager/blob/main/README.md"
+  "documentationUrl": "https://github.com/Ddemon26/TCS-Input-Manager/blob/main/README.md"
 }
