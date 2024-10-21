@@ -1,5 +1,5 @@
 * {
-    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Unity.ttf?fileID=12800000&guid=09aee9ecd7b24ba4d91acfd97f76a26f&type=3#Unity");
+    -unity-font-definition: url("project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Unity.ttf?fileID=12800000&guid=09aee9ecd7b24ba4d91acfd97f76a26f&type=3#Unity");
     -unity-font-style: bold;
     font-size: 13px;
     -unity-text-outline-color: rgb(0, 0, 0);
@@ -9,19 +9,19 @@
 }
 
 .custom-label {
-    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    -unity-font-definition: url("project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
     font-size: 16px;
     color: rgb(255, 251, 0);
 }
 
 .custom-inner-label {
-    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    -unity-font-definition: url("project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
     font-size: 16px;
     color: rgb(255, 251, 0);
 }
 
 .custom-header {
-    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    -unity-font-definition: url("project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
     font-size: 33px;
     color: rgb(255, 251, 0);
     -unity-text-outline-width: 1px;
@@ -62,7 +62,7 @@
 }
 
 .custom-label {
-    -unity-font-definition: url("project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
+    -unity-font-definition: url("project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Fonts/Bangers.ttf?fileID=12800000&guid=8b4400d8892425f47bd7044e38edfc5c&type=3#Bangers");
     font-size: 16px;
 }
 
@@ -126,4 +126,9 @@
     scale: 1.05 1.05;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
+}
+
+.unity-button-group__button {
+    margin-right: 1%;
+    margin-left: 1%;
 }

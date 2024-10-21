@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 namespace TCS.InputSystem {
-    public enum InputAction {
+    /*public enum InputAction {
+        //TODO: add key bindings
         Jump, // Space Key
         Run, // Left Shift Key
         Reload, // R Key
@@ -14,7 +15,7 @@ namespace TCS.InputSystem {
         Emote, // G Key
         Command, // ~ Key
         NumOne // 1 Key
-    }
+    }*/
 
     public enum ControlScheme {
         KeyboardMouse,
@@ -23,13 +24,19 @@ namespace TCS.InputSystem {
     }
 
     [DefaultExecutionOrder(-5000)]
+    [ExecuteAlways]
+    //[SuppressMessage("ReSharper", "UnassignedField.Global")]
     public class InputHub : InputHubSingleton<InputHub> {
         public bool m_isMouseConnected = true;
         public bool m_isGamepadConnected;
         public ControlScheme m_currentControlScheme;
 
-        public bool m_invertY = true;
-        public bool m_invertX;
+        [SerializeField] bool m_lockCursor;
+        [SerializeField] bool m_invertY = true;
+        [SerializeField] bool m_invertX;
+        [SerializeField] Vector2 m_mouseRotationSpeed = new(1.0f, 1.0f);
+        [SerializeField] Vector2 m_gamepadRotationSpeed = new(1.0f, 1.0f);
+        public InputSettings m_inputSettings;
 
         public Vector2 m_moveInput = Vector2.zero;
         public Vector2 m_rotateInput = Vector2.zero;
@@ -39,6 +46,30 @@ namespace TCS.InputSystem {
 
         InputReader m_inputReader;
 
+        public void SetInputSettings(InputSettings settings) {
+            m_inputSettings = settings;
+            HandleInputSettings();
+        }
+
+        public void LockCursor(bool value) {
+            m_lockCursor = value;
+            switch (m_lockCursor) {
+                case true when Cursor.lockState == CursorLockMode.Locked:
+                case false when Cursor.lockState == CursorLockMode.None:
+                    return;
+                case true:
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    Logger.Log("Cursor locked.");
+                    break;
+                default:
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Logger.Log("Cursor unlocked.");
+                    break;
+            }
+        }
+
         void OnEnable() {
             try {
                 m_inputReader = ScriptableObject.CreateInstance<InputReader>();
@@ -46,13 +77,40 @@ namespace TCS.InputSystem {
                 CheckConnectedDevices();
             }
             catch (Exception ex) {
-                Debug.LogError($"An error occurred: {ex.Message}");
+                Logger.LogError($"An error occurred: {ex.Message}");
             }
 
             EnablePlayerActions();
+            if (m_inputSettings) {
+                m_inputSettings.OnValuesChanged += HandleInputSettings;
+            }
         }
 
-        void OnDisable() => DisablePlayerActions();
+        void OnDisable() {
+            DisablePlayerActions();
+            if (m_inputSettings) {
+                m_inputSettings.OnValuesChanged -= HandleInputSettings;
+            }
+        }
+
+        void HandleInputSettings() {
+            if (!m_inputSettings) return;
+            m_invertY = m_inputSettings.m_invertY;
+            m_invertX = m_inputSettings.m_invertX;
+            m_lockCursor = m_inputSettings.m_lockCursor;
+            LockCursor(m_lockCursor);
+
+            m_mouseRotationSpeed.Set
+            (
+                m_inputSettings.m_mouseRotationSpeedX,
+                m_inputSettings.m_mouseRotationSpeedY
+            );
+            m_gamepadRotationSpeed.Set
+            (
+                m_inputSettings.m_gamepadRotationSpeedX,
+                m_inputSettings.m_gamepadRotationSpeedY
+            );
+        }
 
         #region Enable/Disable Player Actions
         void EnablePlayerActions() {
@@ -157,15 +215,30 @@ namespace TCS.InputSystem {
             m_isGamepadConnected = Input.GetJoystickNames().Length > 0;
         }
 
-        public void InvertYAxis(bool value) => m_invertY = value;
-        public void InvertXAxis(bool value) => m_invertX = value;
+        public void InvertYAxis(bool value) {
+            if (m_inputSettings) {
+                m_inputSettings.m_invertY = value;
+                HandleInputSettings();
+            }
+            else {
+                m_invertY = value;
+            }
 
-        static void HandleBooleanInput(bool input, Action<bool> setInputAction) => setInputAction(input);
+            Logger.Log($"Y-axis inverted: {value}");
+        }
+        public void InvertXAxis(bool value) {
+            if (m_inputSettings) {
+                m_inputSettings.m_invertX = value;
+                HandleInputSettings();
+            }
+            else {
+                m_invertX = value;
+            }
+
+            Logger.Log($"X-axis inverted: {value}");
+        }
 
         public void OnMove(Vector2 input) => m_moveInput = input;
-
-        [SerializeField] Vector2 m_mouseRotationSpeed = new(1.0f, 1.0f);
-        [SerializeField] Vector2 m_gamepadRotationSpeed = new(1.0f, 1.0f);
 
         public void OnRotate(Vector2 input, bool isMouseDevice) {
             if (!isMouseDevice) return;
@@ -201,6 +274,8 @@ namespace TCS.InputSystem {
         public bool m_jumpFlag, m_runFlag, m_reloadFlag,
             m_attackFlag, m_crouchFlag, m_blockFlag, m_interactFlag,
             m_escapeFlag, m_openUIFlag, m_emoteFlag, m_commandFlag, m_numOneFlag;
+        static void HandleBooleanInput(bool input, Action<bool> setInputAction) => setInputAction(input);
+
         public void OnJumpFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_jumpFlag = value);
         public void OnRunFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_runFlag = value);
         void OnReloadFlag(bool isPressed) => HandleBooleanInput(isPressed, value => m_reloadFlag = value);

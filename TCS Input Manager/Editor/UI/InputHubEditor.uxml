@@ -1,5 +1,5 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/Resources/InputHubEditor.uss?fileID=7433441132597879392&amp;guid=48e3a56c1dffc034780e1cf7b4a5bc3f&amp;type=3#InputHubEditor" />
+    <Style src="project://database/Assets/TCS-PackageSystems/TCS-Input-Manager/TCS%20Input%20Manager/Editor/UI/InputHubEditor.uss?fileID=7433441132597879392&amp;guid=48e3a56c1dffc034780e1cf7b4a5bc3f&amp;type=3#InputHubEditor" />
     <engine:VisualElement name="root" style="flex-grow: 1;">
         <engine:VisualElement name="class-header" class="container__background container__border center-spacing container-padding" style="flex-grow: 0; margin-top: 4px; margin-bottom: 4px;">
             <engine:Label text="Input Hub Manager" name="header__label" class="custom-header flex-center" />
@@ -12,12 +12,16 @@
                 <engine:Toggle label="Mouse Connected" binding-path="m_isMouseConnected" />
                 <engine:Toggle label="GamePad Connected" binding-path="m_isGamepadConnected" />
                 <engine:EnumField label="Current Device" value="KeyboardMouse" type="TCInputSystem.ControlScheme, TCS.InputSystem" binding-path="m_currentControlScheme" />
+                <engine:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+                    <editor:PropertyField binding-path="m_inputSettings" style="align-self: center;" />
+                    <engine:Button text="Button" name="create-settings__button" />
+                </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="menu-select" class="center-spacing" style="flex-grow: 1; overflow: hidden; display: flex;">
                 <engine:VisualElement>
                     <engine:Label text="Select Menu" class="flex-center custom-label" />
                 </engine:VisualElement>
-                <engine:ToggleButtonGroup allow-empty-selection="false" value="0001" name="menu-select" view-data-key="MenuSelectKey" class="flex-center">
+                <engine:ToggleButtonGroup allow-empty-selection="false" value="100" name="menu-select" view-data-key="MenuSelectKey" class="flex-center">
                     <engine:Button text="Settings" />
                     <engine:Button text="Vectors" />
                     <engine:Button text="Flags" />
@@ -29,6 +33,7 @@
             <engine:VisualElement name="input-settings__panel" style="flex-direction: row;">
                 <engine:VisualElement class="content-align-half" style="width: auto;">
                     <engine:Label text="Label" class="custom-inner-label flex-center" />
+                    <engine:Toggle label="Lock Cursor" name="lock-cursor__toggle" binding-path="m_lockCursor" />
                     <engine:Toggle label="Invert Look Y" binding-path="m_invertY" />
                     <engine:Toggle label="Invert Look X" binding-path="m_invertX" />
                 </engine:VisualElement>
