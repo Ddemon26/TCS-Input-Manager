@@ -83,6 +83,7 @@ namespace TCS.InputSystem {
             EnablePlayerActions();
             if (m_inputSettings) {
                 m_inputSettings.OnValuesChanged += HandleInputSettings;
+                m_inputSettings.OnValidate(); //Testing might remove
             }
         }
 
@@ -90,25 +91,26 @@ namespace TCS.InputSystem {
             DisablePlayerActions();
             if (m_inputSettings) {
                 m_inputSettings.OnValuesChanged -= HandleInputSettings;
+                m_inputSettings.OnValidate(); //Testing might remove
             }
         }
 
         void HandleInputSettings() {
             if (!m_inputSettings) return;
-            m_invertY = m_inputSettings.m_invertY;
-            m_invertX = m_inputSettings.m_invertX;
-            m_lockCursor = m_inputSettings.m_lockCursor;
+            m_invertY = m_inputSettings.InvertY;
+            m_invertX = m_inputSettings.InvertX;
+            m_lockCursor = m_inputSettings.LockCursor;
             LockCursor(m_lockCursor);
 
             m_mouseRotationSpeed.Set
             (
-                m_inputSettings.m_mouseRotationSpeedX,
-                m_inputSettings.m_mouseRotationSpeedY
+                m_inputSettings.MouseRotationSpeedX,
+                m_inputSettings.MouseRotationSpeedY
             );
             m_gamepadRotationSpeed.Set
             (
-                m_inputSettings.m_gamepadRotationSpeedX,
-                m_inputSettings.m_gamepadRotationSpeedY
+                m_inputSettings.GamepadRotationSpeedX,
+                m_inputSettings.GamepadRotationSpeedY
             );
         }
 
@@ -217,7 +219,7 @@ namespace TCS.InputSystem {
 
         public void InvertYAxis(bool value) {
             if (m_inputSettings) {
-                m_inputSettings.m_invertY = value;
+                m_inputSettings.InvertY = value;
                 HandleInputSettings();
             }
             else {
@@ -228,7 +230,7 @@ namespace TCS.InputSystem {
         }
         public void InvertXAxis(bool value) {
             if (m_inputSettings) {
-                m_inputSettings.m_invertX = value;
+                m_inputSettings.InvertX = value;
                 HandleInputSettings();
             }
             else {

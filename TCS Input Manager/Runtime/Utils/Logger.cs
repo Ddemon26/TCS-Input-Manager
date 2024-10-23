@@ -22,8 +22,8 @@ namespace TCS.InputSystem {
             return $"<color={color}>[{newString}]</color>";
         }
 
-        static void LogInternal(string message, LogType logType, Object context = null) {
-            if (!IsDebugMode) return;
+        static void LogInternal(object message, LogType logType, Object context = null) {
+            if (!IsDebugMode) return;   
             var formattedMessage = $"{CLASS_NAME.SetPrefix(logType)} {message}";
             #if PROJECT_DEBUG
             switch (logType) {
