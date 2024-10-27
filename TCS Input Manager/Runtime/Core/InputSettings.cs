@@ -23,79 +23,45 @@ namespace TCS.InputSystem {
             get => m_mouseRotationSpeedX;
             set {
                 value = Mathf.Clamp(value, 0.01f, 999);
-                if (!SetField(ref m_mouseRotationSpeedX, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log("MouseRotationSpeedX");
+                SetField(ref m_mouseRotationSpeedX, value);
             }
         }
         public float MouseRotationSpeedY {
             get => m_mouseRotationSpeedY;
             set {
                 value = Mathf.Clamp(value, 0.01f, 999);
-                if (!SetField(ref m_mouseRotationSpeedY, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log("MouseRotationSpeedY");
+                SetField(ref m_mouseRotationSpeedY, value);
             }
         }
         public float GamepadRotationSpeedX {
             get => m_gamepadRotationSpeedX;
             set {
                 value = Mathf.Clamp(value, 0.01f, 999);
-                if (!SetField(ref m_gamepadRotationSpeedX, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log("GamepadRotationSpeedX");
+                SetField(ref m_gamepadRotationSpeedX, value);
             }
         }
         public float GamepadRotationSpeedY {
             get => m_gamepadRotationSpeedY;
             set {
                 value = Mathf.Clamp(value, 0.01f, 999);
-                if (!SetField(ref m_gamepadRotationSpeedY, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log("GamepadRotationSpeedY");
+                SetField(ref m_gamepadRotationSpeedY, value);
             }
         }
         public bool LockCursor {
             get => m_lockCursor;
-            set {
-                if (!SetField(ref m_lockCursor, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log($"LockCursor {m_lockCursor}");
-            }
+            set => SetField(ref m_lockCursor, value);
         }
         public bool InvertY {
             get => m_invertY;
-            set {
-                if (!SetField(ref m_invertY, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log($"InvertY {m_invertY}");
-            }
+            set => SetField(ref m_invertY, value);
         }
         public bool InvertX {
             get => m_invertX;
-            set {
-                if (!SetField(ref m_invertX, value)) return;
-                OnValuesChanged?.Invoke();
-                Debug.Log($"InvertX {m_invertX}");
-            }
+            set => SetField(ref m_invertX, value);
         }
         
         public Action OnValuesChanged;
-        void Awake() {
-            Debug.Log($"Awake {m_mouseRotationSpeedX}");
-        }
-        void OnEnable() {
-            Debug.Log($"OnEnable {m_mouseRotationSpeedX}");
-        }
-        public void OnValidate() {
-            Debug.Log($"OnValidate {name}");
-            OnValuesChanged?.Invoke();
-            EditorUtility.SetDirty(this);
-        }
         
-        void OnDisable() {
-            Debug.Log($"OnDisable {m_mouseRotationSpeedX}");
-        }
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -104,6 +70,10 @@ namespace TCS.InputSystem {
             if (EqualityComparer<T>.Default.Equals(field, value)) return false;
             field = value;
             OnPropertyChanged(propertyName);
+            OnValuesChanged?.Invoke();
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(this);
+#endif
             return true;
         }
     }
