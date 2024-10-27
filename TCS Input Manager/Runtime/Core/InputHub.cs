@@ -83,7 +83,6 @@ namespace TCS.InputSystem {
             EnablePlayerActions();
             if (m_inputSettings) {
                 m_inputSettings.OnValuesChanged += HandleInputSettings;
-                m_inputSettings.OnValidate(); //Testing might remove
             }
         }
 
@@ -91,7 +90,6 @@ namespace TCS.InputSystem {
             DisablePlayerActions();
             if (m_inputSettings) {
                 m_inputSettings.OnValuesChanged -= HandleInputSettings;
-                m_inputSettings.OnValidate(); //Testing might remove
             }
         }
 
