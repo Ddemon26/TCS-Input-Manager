@@ -20,7 +20,7 @@ namespace TCS.InputSystem {
     public enum ControlScheme {
         KeyboardMouse,
         Gamepad,
-        Mobile
+        Mobile,
     }
 
     [DefaultExecutionOrder(-5000)]
