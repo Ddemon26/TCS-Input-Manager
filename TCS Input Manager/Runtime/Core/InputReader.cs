@@ -37,18 +37,13 @@ namespace TCS.InputSystem {
         public void EnablePlayerActions() => m_inputActions.Enable();
         public void DisablePlayerActions() => m_inputActions.Disable();
 
-        static bool IsMouseDevice(UnityEngine.InputSystem.InputAction.CallbackContext context) =>
-            context.control.device.name == "Mouse";
-        static bool IsGamepadDevice(UnityEngine.InputSystem.InputAction.CallbackContext context) =>
-            context.control.device.name.Contains("Gamepad");
-        public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context) => Move.Invoke(context.ReadValue<Vector2>());
-        public void OnScrollWheel(UnityEngine.InputSystem.InputAction.CallbackContext context) =>
-            ScrollWheel.Invoke(context.ReadValue<Vector2>(), IsMouseDevice(context));
-        public void OnRotatePlayer(UnityEngine.InputSystem.InputAction.CallbackContext context) =>
-            Rotate.Invoke(context.ReadValue<Vector2>(), IsMouseDevice(context));
-        public void OnRotatePlayerController(UnityEngine.InputSystem.InputAction.CallbackContext context) =>
-            RotateController.Invoke(context.ReadValue<Vector2>(), IsGamepadDevice(context));
-        static void HandleBinaryAction(UnityEngine.InputSystem.InputAction.CallbackContext context, UnityAction<bool> action)
+        static bool IsMouseDevice(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
+        static bool IsGamepadDevice(InputAction.CallbackContext context) => context.control.device.name.Contains("Gamepad");
+        public void OnMove(InputAction.CallbackContext context) => Move.Invoke(context.ReadValue<Vector2>());
+        public void OnScrollWheel(InputAction.CallbackContext context) => ScrollWheel.Invoke(context.ReadValue<Vector2>(), IsMouseDevice(context));
+        public void OnRotatePlayer(InputAction.CallbackContext context) => Rotate.Invoke(context.ReadValue<Vector2>(), IsMouseDevice(context));
+        public void OnRotatePlayerController(InputAction.CallbackContext context) => RotateController.Invoke(context.ReadValue<Vector2>(), IsGamepadDevice(context));
+        static void HandleBinaryAction(InputAction.CallbackContext context, UnityAction<bool> action)
         {
             switch (context.phase)
             {
@@ -67,18 +62,18 @@ namespace TCS.InputSystem {
         }
 
 
-        public void OnRun(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Run);
-        public void OnReload(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Reload);
-        public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Jump);
-        public void OnCrouch(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Crouch);
-        public void OnInteract(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Interact);
-        public void OnEscape(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Escape);
-        public void OnOpenUI(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, OpenUI);
-        public void OnEmote(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, Emote);
-        public void OnCommandKey(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, CommandKey);
-        public void OnNumOne(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleBinaryAction(context, NumOne);
+        public void OnRun(InputAction.CallbackContext context) => HandleBinaryAction(context, Run);
+        public void OnReload(InputAction.CallbackContext context) => HandleBinaryAction(context, Reload);
+        public void OnJump(InputAction.CallbackContext context) => HandleBinaryAction(context, Jump);
+        public void OnCrouch(InputAction.CallbackContext context) => HandleBinaryAction(context, Crouch);
+        public void OnInteract(InputAction.CallbackContext context) => HandleBinaryAction(context, Interact);
+        public void OnEscape(InputAction.CallbackContext context) => HandleBinaryAction(context, Escape);
+        public void OnOpenUI(InputAction.CallbackContext context) => HandleBinaryAction(context, OpenUI);
+        public void OnEmote(InputAction.CallbackContext context) => HandleBinaryAction(context, Emote);
+        public void OnCommandKey(InputAction.CallbackContext context) => HandleBinaryAction(context, CommandKey);
+        public void OnNumOne(InputAction.CallbackContext context) => HandleBinaryAction(context, NumOne);
 
-        static void HandleHoldAction(UnityEngine.InputSystem.InputAction.CallbackContext context, UnityAction<bool> action)
+        static void HandleHoldAction(InputAction.CallbackContext context, UnityAction<bool> action)
         {
             switch (context.phase)
             {
@@ -96,7 +91,7 @@ namespace TCS.InputSystem {
             }
         }
 
-        public void OnAttack(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleHoldAction(context, Attack);
-        public void OnBlock(UnityEngine.InputSystem.InputAction.CallbackContext context) => HandleHoldAction(context, Block);
+        public void OnAttack(InputAction.CallbackContext context) => HandleHoldAction(context, Attack);
+        public void OnBlock(InputAction.CallbackContext context) => HandleHoldAction(context, Block);
     }
 }
