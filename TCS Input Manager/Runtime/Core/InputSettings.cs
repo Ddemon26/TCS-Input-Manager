@@ -13,9 +13,11 @@ namespace TCS.InputSystem {
         [SerializeField]  bool m_lockCursor;
         [SerializeField]  bool m_invertY = true;
         [SerializeField]  bool m_invertX;
+        [Space(20)]
         [Header("Mouse Sensitivity")]
         [SerializeField] float m_mouseRotationSpeedX = 1.0f;
         [SerializeField] float m_mouseRotationSpeedY = 1.0f;
+        [Space(10)]
         [SerializeField] float m_gamepadRotationSpeedX = 1.0f;
         [SerializeField] float m_gamepadRotationSpeedY = 1.0f;
         

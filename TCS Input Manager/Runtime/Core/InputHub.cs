@@ -1,42 +1,26 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.InputSystem.Mouse;
 namespace TCS.InputSystem {
-    /*public enum InputAction {
-        //TODO: add key bindings
-        Jump, // Space Key
-        Run, // Left Shift Key
-        Reload, // R Key
-        Attack, // Left Mouse Button
-        Crouch, // Left Control Key
-        Block, // Right Mouse Button
-        Interact, // E Key
-        Escape, // Escape Key
-        OpenUI, // Tab Key
-        Emote, // G Key
-        Command, // ~ Key
-        NumOne // 1 Key
-    }*/
-
-    public enum ControlScheme {
-        KeyboardMouse,
-        Gamepad,
-        Mobile,
-    }
-
     [DefaultExecutionOrder(-5000)]
-    [ExecuteAlways]
-    //[SuppressMessage("ReSharper", "UnassignedField.Global")]
     public class InputHub : InputHubSingleton<InputHub> {
+        [Space(10)]
+        public InputSettings m_inputSettings;
+        [Space(20)]
         public bool m_isMouseConnected = true;
         public bool m_isGamepadConnected;
-        public ControlScheme m_currentControlScheme;
 
         [SerializeField] bool m_lockCursor;
         [SerializeField] bool m_invertY = true;
         [SerializeField] bool m_invertX;
+        
         [SerializeField] Vector2 m_mouseRotationSpeed = new(1.0f, 1.0f);
+        [SerializeField] float m_mouseRotationSpeedX = 1.0f;
+        [SerializeField] float m_mouseRotationSpeedY = 1.0f;
+        
         [SerializeField] Vector2 m_gamepadRotationSpeed = new(1.0f, 1.0f);
-        public InputSettings m_inputSettings;
+        [SerializeField] float m_gamepadRotationSpeedX = 1.0f;
+        [SerializeField] float m_gamepadRotationSpeedY = 1.0f;
 
         public Vector2 m_moveInput = Vector2.zero;
         public Vector2 m_rotateInput = Vector2.zero;
@@ -81,8 +65,13 @@ namespace TCS.InputSystem {
             }
 
             EnablePlayerActions();
+            
             if (m_inputSettings) {
+                HandleInputSettings();
                 m_inputSettings.OnValuesChanged += HandleInputSettings;
+            }
+            else {
+                LockCursor(m_lockCursor);
             }
         }
 
@@ -205,13 +194,8 @@ namespace TCS.InputSystem {
         }
         #endregion
 
-        public void ChangeControlScheme(ControlScheme controlScheme) {
-            m_currentControlScheme = controlScheme;
-            m_inputReader.EnablePlayerActions();
-        }
-
         void CheckConnectedDevices() {
-            m_isMouseConnected = UnityEngine.InputSystem.Mouse.current != null;
+            m_isMouseConnected = current != null;
             m_isGamepadConnected = Input.GetJoystickNames().Length > 0;
         }
 
@@ -295,7 +279,7 @@ namespace TCS.InputSystem {
             OnReloadAction, OnCrouchAction, OnBlockAction, OnInteractAction,
             OnEscapeAction, OnOpenUIAction, OnEmoteAction, OnCommandAction, OnNumOneAction;
 
-        void HandleEventAction(bool isPressed, Action<bool> action) => action?.Invoke(isPressed);
+        static void HandleEventAction(bool isPressed, Action<bool> action) => action?.Invoke(isPressed);
 
         void AttackActionEvent(bool isPressed) => HandleEventAction(isPressed, OnAttackAction);
         void JumpActionEvent(bool isPressed) => HandleEventAction(isPressed, OnJumpAction);
