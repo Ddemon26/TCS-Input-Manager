@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 namespace TCS.InputSystem {
-    [CreateAssetMenu(menuName = "TCS/Input Settings", fileName = "InputSettings", order = 0)]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [CreateAssetMenu(menuName = "Tent City Studio/Input Settings", fileName = "InputSettings", order = 0)]
     public class InputSettings : ScriptableObject, INotifyPropertyChanged {
         [Header("Mouse Settings")]
         [SerializeField]  bool m_lockCursor;
