@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 namespace TCS.InputSystem {
-    [CreateAssetMenu(fileName = "InputReader", menuName = "TCS/InputSystem/InputReader")]
+    [CreateAssetMenu(fileName = "InputReader", menuName = "Tent City Studio/InputSystem/InputReader")]
     public class InputReader : ScriptableObject, PlayerInput.ICharacterControlsActions
     {
         public event UnityAction<Vector2> Move = delegate { };
